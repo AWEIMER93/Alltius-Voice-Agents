@@ -7,6 +7,8 @@ import {
   Home,
   Building,
   CreditCard,
+  FileText,
+  TrendingUp,
 } from "lucide-react";
 
 export const agentsList: Agent[] = [
@@ -15,7 +17,7 @@ export const agentsList: Agent[] = [
     name: "Paul",
     role: "Auto Quote Agent",
     description: "Provides custom quotes for auto insurance with personalized options tailored to your needs.",
-    color: "bg-blue-500",
+    color: "bg-purple-500",
     icon: "Car",
   },
   {
@@ -23,7 +25,7 @@ export const agentsList: Agent[] = [
     name: "Marcus",
     role: "FNOL Agent",
     description: "Handles First Notice of Loss reports for insurance claims with efficiency and empathy.",
-    color: "bg-red-500",
+    color: "bg-violet-500",
     icon: "FileText",
   },
   {
@@ -31,7 +33,7 @@ export const agentsList: Agent[] = [
     name: "Anthony",
     role: "Inbound Wealth Management Agent",
     description: "Assists with financial planning, investments, and wealth management solutions.",
-    color: "bg-emerald-500",
+    color: "bg-indigo-500",
     icon: "TrendingUp",
   },
   {
@@ -39,7 +41,7 @@ export const agentsList: Agent[] = [
     name: "Nathan",
     role: "Health Care Collections Agent",
     description: "Manages healthcare billing, insurance claims, and collection processes with care.",
-    color: "bg-violet-500",
+    color: "bg-fuchsia-500",
     icon: "Stethoscope",
   },
   {
@@ -47,7 +49,7 @@ export const agentsList: Agent[] = [
     name: "Michael",
     role: "Mortgage Servicing Agent",
     description: "Helps with mortgage questions, payments, and servicing needs for homeowners.",
-    color: "bg-amber-500",
+    color: "bg-purple-500",
     icon: "Home",
   },
   {
@@ -55,7 +57,7 @@ export const agentsList: Agent[] = [
     name: "Lauren",
     role: "Home Insurance Agent",
     description: "Provides guidance on home insurance policies, coverage options, and claims.",
-    color: "bg-cyan-500",
+    color: "bg-violet-500",
     icon: "Building",
   },
 ];
@@ -69,9 +71,9 @@ export const getAgentIcon = (iconName: string) => {
     case "Car":
       return Car;
     case "FileText":
-      return Calculator;
+      return FileText;
     case "TrendingUp":
-      return CreditCard;
+      return TrendingUp;
     case "Stethoscope":
       return Stethoscope;
     case "Home":

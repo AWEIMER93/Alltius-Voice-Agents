@@ -20,7 +20,7 @@ const AgentDetails: React.FC<AgentDetailsProps> = ({ agent }) => {
     >
       <Link
         to="/"
-        className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-8 transition-colors duration-300"
+        className="inline-flex items-center text-purple-600 hover:text-purple-800 mb-8 transition-colors duration-300"
       >
         <ArrowLeft size={16} className="mr-1" />
         <span>Back to gallery</span>
@@ -38,11 +38,11 @@ const AgentDetails: React.FC<AgentDetailsProps> = ({ agent }) => {
             </div>
             <div>
               <h1 className="text-3xl font-bold text-slate-900">{agent.name}</h1>
-              <p className="text-blue-600 font-medium">{agent.role}</p>
+              <p className="text-purple-600 font-medium">{agent.role}</p>
             </div>
           </div>
 
-          <div className="glass-card p-6 rounded-xl mb-6">
+          <div className="glass-card p-6 rounded-xl mb-6 border border-purple-100">
             <h2 className="text-xl font-semibold mb-3 text-slate-800">About this Agent</h2>
             <p className="text-slate-600 mb-4">{agent.description}</p>
             <p className="text-slate-600">
@@ -50,19 +50,19 @@ const AgentDetails: React.FC<AgentDetailsProps> = ({ agent }) => {
             </p>
           </div>
 
-          <div className="glass-card p-6 rounded-xl">
+          <div className="glass-card p-6 rounded-xl border border-purple-100">
             <h2 className="text-xl font-semibold mb-3 text-slate-800">How to use</h2>
             <ul className="space-y-2 text-slate-600">
               <li className="flex items-start">
-                <span className="mr-2 text-blue-500 font-bold">1.</span>
+                <span className="mr-2 text-purple-500 font-bold">1.</span>
                 <span>Click the microphone icon to start speaking with {agent.name}.</span>
               </li>
               <li className="flex items-start">
-                <span className="mr-2 text-blue-500 font-bold">2.</span>
+                <span className="mr-2 text-purple-500 font-bold">2.</span>
                 <span>Ask questions related to {agent.role.toLowerCase()}.</span>
               </li>
               <li className="flex items-start">
-                <span className="mr-2 text-blue-500 font-bold">3.</span>
+                <span className="mr-2 text-purple-500 font-bold">3.</span>
                 <span>Experience a natural conversation with contextual responses.</span>
               </li>
             </ul>

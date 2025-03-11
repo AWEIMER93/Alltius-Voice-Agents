@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const AgentsGrid: React.FC = () => {
   return (
-    <section id="agents" className="py-16 px-4 sm:px-6 lg:px-8">
+    <section id="agents" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -17,7 +17,7 @@ const AgentsGrid: React.FC = () => {
         >
           <h2 className="text-3xl font-bold text-slate-900 mb-4">Voice Agents Gallery</h2>
           <p className="text-slate-600 max-w-2xl mx-auto">
-            Select an agent below to experience interactive demos tailored for different business needs.
+            Select an agent below to experience interactive demos tailored for different financial service needs.
           </p>
         </motion.div>
         

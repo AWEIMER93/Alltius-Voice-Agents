@@ -9,8 +9,8 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
-      <header className="py-6 px-4 sm:px-6 lg:px-8 border-b border-slate-100">
+    <div className="min-h-screen bg-gradient-to-br from-white to-purple-50">
+      <header className="py-4 px-4 sm:px-6 lg:px-8 border-b border-slate-100 bg-white">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -19,10 +19,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           >
             <Link 
               to="/" 
-              className="text-2xl font-semibold text-slate-900 tracking-tight flex items-center"
+              className="flex items-center"
             >
-              <span className="bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text">Voice</span>
-              <span className="ml-1 text-slate-800">Agents</span>
+              <img 
+                src="https://cdn.prod.website-files.com/634e9d5d7cb8f75cf4b28166/64d3781e337c540557333a5d_Alltius_Navbar%20Logo_Large_For%20White%20BG.webp" 
+                alt="Alltius" 
+                className="h-10 mr-3"
+              />
+              <span className="text-lg font-semibold text-slate-800 ml-2">Voice Agents</span>
             </Link>
           </motion.div>
           <motion.nav
@@ -34,7 +38,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               <li>
                 <Link 
                   to="/" 
-                  className="text-slate-700 hover:text-blue-600 transition-colors underline-animation"
+                  className="text-slate-700 hover:text-purple-600 transition-colors underline-animation"
                 >
                   Home
                 </Link>
@@ -42,7 +46,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               <li>
                 <a 
                   href="#agents" 
-                  className="text-slate-700 hover:text-blue-600 transition-colors underline-animation"
+                  className="text-slate-700 hover:text-purple-600 transition-colors underline-animation"
                 >
                   Agents
                 </a>
@@ -54,9 +58,17 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <main>
         {children}
       </main>
-      <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-slate-100">
-        <div className="max-w-7xl mx-auto text-center text-sm text-slate-500">
-          <p>© {new Date().getFullYear()} Voice Agent Gallery. All rights reserved.</p>
+      <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-slate-100 bg-white">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="flex justify-center mb-4">
+            <img 
+              src="https://cdn.prod.website-files.com/634e9d5d7cb8f75cf4b28166/64d3781e337c540557333a5d_Alltius_Navbar%20Logo_Large_For%20White%20BG.webp" 
+              alt="Alltius" 
+              className="h-8"
+            />
+          </div>
+          <p className="text-sm text-slate-500">© {new Date().getFullYear()} Alltius. All rights reserved.</p>
+          <p className="text-xs text-slate-400 mt-2">Voice agents powered by Vapi</p>
         </div>
       </footer>
     </div>

@@ -16,9 +16,9 @@ const Hero: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
-                <span className="block">Interactive Voice Agents</span>
-                <span className="block mt-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text">
-                  Powered by Vapi
+                <span className="block">Voice AI Assistants</span>
+                <span className="block mt-3 bg-gradient-to-r from-purple-600 to-violet-500 text-transparent bg-clip-text">
+                  Powered by Alltius
                 </span>
               </motion.h1>
               <motion.p
@@ -27,7 +27,8 @@ const Hero: React.FC = () => {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                Explore our collection of specialized voice agents designed for various industries. Select an agent to experience interactive demos and see how they can transform your business.
+                Explore our collection of specialized voice agents designed for financial services. 
+                Select an agent to experience interactive demos and see how Alltius can transform your customer experience.
               </motion.p>
               <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-center">
                 <motion.div
@@ -38,7 +39,7 @@ const Hero: React.FC = () => {
                 >
                   <a
                     href="#agents"
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10 transition-all duration-300 hover:shadow-lg"
+                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 md:py-4 md:text-lg md:px-10 transition-all duration-300 hover:shadow-lg"
                   >
                     View Agents
                   </a>
@@ -50,10 +51,10 @@ const Hero: React.FC = () => {
                   transition={{ duration: 0.5, delay: 0.7 }}
                 >
                   <a
-                    href="https://vapi.ai"
+                    href="https://alltius.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white border-blue-600 hover:bg-gray-50 md:py-4 md:text-lg md:px-10 transition-all duration-300"
+                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-purple-600 bg-white border-purple-600 hover:bg-gray-50 md:py-4 md:text-lg md:px-10 transition-all duration-300"
                   >
                     Learn More
                   </a>
@@ -72,7 +73,7 @@ const Hero: React.FC = () => {
                 repeatType: "loop"
               }}
             >
-              <ArrowDown className="text-blue-500 animate-bounce" size={32} />
+              <ArrowDown className="text-purple-500 animate-bounce" size={32} />
             </motion.div>
           </div>
         </div>
