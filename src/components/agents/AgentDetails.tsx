@@ -1,15 +1,12 @@
 
 import React from "react";
 import { AgentDetailsProps } from "../../types/agent";
-import { getAgentIcon } from "../../data/agents";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import VapiPlayer from "./VapiPlayer";
 
 const AgentDetails: React.FC<AgentDetailsProps> = ({ agent }) => {
-  const IconComponent = getAgentIcon(agent.icon);
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -33,8 +30,17 @@ const AgentDetails: React.FC<AgentDetailsProps> = ({ agent }) => {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <div className="flex items-center mb-6">
-            <div className={`p-3 rounded-full ${agent.color} w-12 h-12 flex items-center justify-center text-white mr-4`}>
-              <IconComponent size={24} />
+            <div className={`rounded-full overflow-hidden w-16 h-16 mr-4 border-2 ${agent.color.replace('bg-', 'border-')}`}>
+              <img 
+                src={agent.image} 
+                alt={`${agent.name}, ${agent.role}`}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  // Fallback if image fails to load
+                  const target = e.target as HTMLImageElement;
+                  target.src = 'https://via.placeholder.com/150?text=' + agent.name.charAt(0);
+                }}
+              />
             </div>
             <div>
               <h1 className="text-3xl font-bold text-slate-900">{agent.name}</h1>

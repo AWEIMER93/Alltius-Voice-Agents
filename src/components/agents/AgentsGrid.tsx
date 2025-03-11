@@ -15,6 +15,11 @@ const AgentsGrid: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
+          <img 
+            src="https://cdn.prod.website-files.com/634e9d5d7cb8f75cf4b28166/64d3781e337c540557333a5d_Alltius_Navbar%20Logo_Large_For%20White%20BG.webp" 
+            alt="Alltius Logo" 
+            className="h-12 mx-auto mb-6"
+          />
           <h2 className="text-3xl font-bold text-slate-900 mb-4">Voice Agents Gallery</h2>
           <p className="text-slate-600 max-w-2xl mx-auto">
             Select an agent below to experience interactive demos tailored for different financial service needs.

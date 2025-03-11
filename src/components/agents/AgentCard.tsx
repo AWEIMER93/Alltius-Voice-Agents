@@ -2,7 +2,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Agent } from "../../types/agent";
-import { getAgentIcon } from "../../data/agents";
 import { Link } from "react-router-dom";
 
 interface AgentCardProps {
@@ -11,8 +10,6 @@ interface AgentCardProps {
 }
 
 const AgentCard: React.FC<AgentCardProps> = ({ agent, index }) => {
-  const IconComponent = getAgentIcon(agent.icon);
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -25,11 +22,20 @@ const AgentCard: React.FC<AgentCardProps> = ({ agent, index }) => {
       className="rounded-xl overflow-hidden glass-card p-6 agent-card-hover border border-purple-100"
     >
       <div className="flex flex-col h-full">
-        <div className={`p-3 rounded-full ${agent.color} w-12 h-12 flex items-center justify-center text-white mb-4`}>
-          <IconComponent size={24} />
+        <div className="mb-4 rounded-full overflow-hidden w-16 h-16 mx-auto">
+          <img 
+            src={agent.image} 
+            alt={`${agent.name}, ${agent.role}`}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              // Fallback if image fails to load
+              const target = e.target as HTMLImageElement;
+              target.src = 'https://via.placeholder.com/150?text=' + agent.name.charAt(0);
+            }}
+          />
         </div>
-        <h3 className="text-xl font-semibold mb-1 text-slate-900">{agent.name}</h3>
-        <p className="text-sm font-medium text-purple-600 mb-2">{agent.role}</p>
+        <h3 className="text-xl font-semibold mb-1 text-slate-900 text-center">{agent.name}</h3>
+        <p className="text-sm font-medium text-purple-600 mb-2 text-center">{agent.role}</p>
         <p className="text-slate-600 text-sm flex-grow mb-4">{agent.description}</p>
         <Link
           to={`/agent/${agent.id}`}

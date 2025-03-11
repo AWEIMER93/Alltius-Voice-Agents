@@ -12,61 +12,76 @@ const VapiPlayer: React.FC<VapiPlayerProps> = ({ assistantId }) => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Load Vapi script
-    const loadScript = () => {
-      setIsLoading(true);
-      setError(null);
-      
-      try {
-        const script = document.createElement("script");
-        script.src = "https://cdn.vapi.ai/web-sdk@latest/dist/index.min.js";
-        script.async = true;
-        script.defer = true;
-        script.onload = () => initializeVapi();
-        script.onerror = () => {
-          setError("Failed to load Vapi script. Please check your internet connection and try again.");
-          setIsLoading(false);
-        };
-        document.body.appendChild(script);
-        
-        return () => {
-          // Cleanup
-          if (document.body.contains(script)) {
-            document.body.removeChild(script);
-          }
-        };
-      } catch (err) {
-        console.error("Error creating script:", err);
-        setError("Something went wrong while loading the voice agent.");
-        setIsLoading(false);
-      }
-    };
+    // Reset state when component loads or assistantId changes
+    setIsLoading(true);
+    setError(null);
+    setIsPlayerReady(false);
     
-    loadScript();
-  }, [assistantId]);
-
-  const initializeVapi = () => {
-    if (window.Vapi) {
+    let scriptElement: HTMLScriptElement | null = null;
+    
+    const initializeVapi = () => {
       try {
-        // Initialize with the API key and assistant ID
-        const vapi = new window.Vapi("6efa9f73-a4ea-464e-9fa5-54a7a7eca4f3");
-        
-        // Use the assistantId from props
-        vapi.start(assistantId);
-        
-        setIsPlayerReady(true);
-        setIsLoading(false);
+        if (window.Vapi) {
+          // Initialize with the API key and assistant ID
+          const vapi = new window.Vapi("6efa9f73-a4ea-464e-9fa5-54a7a7eca4f3");
+          
+          // Use the assistantId from props
+          vapi.start(assistantId);
+          
+          setIsPlayerReady(true);
+          setIsLoading(false);
+        } else {
+          console.error("Vapi is not available");
+          setError("Voice agent service is not available. Please try again later.");
+          setIsLoading(false);
+        }
       } catch (error) {
         console.error("Error initializing Vapi:", error);
         setError("Error initializing the voice agent. Please try again later.");
         setIsLoading(false);
       }
-    } else {
-      console.error("Vapi is not available");
-      setError("Voice agent service is not available. Please try again later.");
-      setIsLoading(false);
-    }
-  };
+    };
+
+    const loadScript = () => {
+      // Check if script is already in the document
+      const existingScript = document.getElementById('vapi-script');
+      if (existingScript) {
+        // Script already exists, just initialize Vapi
+        initializeVapi();
+        return;
+      }
+
+      // Create new script element
+      scriptElement = document.createElement("script");
+      scriptElement.id = 'vapi-script';
+      scriptElement.src = "https://sdk.vapi.ai/script.js"; // Using the updated script URL
+      scriptElement.async = true;
+      scriptElement.defer = true;
+      
+      scriptElement.onload = () => {
+        console.log("Vapi script loaded successfully");
+        initializeVapi();
+      };
+      
+      scriptElement.onerror = (e) => {
+        console.error("Failed to load Vapi script:", e);
+        setError("Failed to load voice agent service. Please check your internet connection and try again.");
+        setIsLoading(false);
+      };
+      
+      document.body.appendChild(scriptElement);
+    };
+    
+    // Load the script
+    loadScript();
+    
+    return () => {
+      // Cleanup
+      if (scriptElement && document.body.contains(scriptElement)) {
+        document.body.removeChild(scriptElement);
+      }
+    };
+  }, [assistantId]);
 
   return (
     <div className="relative min-h-[400px] flex items-center justify-center rounded-xl glass-card p-6 shadow-soft">

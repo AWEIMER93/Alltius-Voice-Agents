@@ -6,6 +6,7 @@ export type Agent = {
   description: string;
   color: string;
   icon: string;
+  image: string; // Added image property
 };
 
 export type AgentDetailsProps = {
