@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Vapi from "@vapi-ai/web";
 
 interface VapiPlayerProps {
   assistantId: string;
@@ -17,69 +18,26 @@ const VapiPlayer: React.FC<VapiPlayerProps> = ({ assistantId }) => {
     setError(null);
     setIsPlayerReady(false);
     
-    let scriptElement: HTMLScriptElement | null = null;
-    
-    const initializeVapi = () => {
-      try {
-        if (window.Vapi) {
-          // Initialize with the API key and assistant ID
-          const vapi = new window.Vapi("6efa9f73-a4ea-464e-9fa5-54a7a7eca4f3");
-          
-          // Use the assistantId from props
-          vapi.start(assistantId);
-          
-          setIsPlayerReady(true);
-          setIsLoading(false);
-        } else {
-          console.error("Vapi is not available");
-          setError("Voice agent service is not available. Please try again later.");
-          setIsLoading(false);
-        }
-      } catch (error) {
-        console.error("Error initializing Vapi:", error);
-        setError("Error initializing the voice agent. Please try again later.");
-        setIsLoading(false);
-      }
-    };
+    try {
+      console.log("Initializing Vapi with assistant ID:", assistantId);
+      const apiKey = "6efa9f73-a4ea-464e-9fa5-54a7a7eca4f3";
+      const vapi = new Vapi(apiKey);
+      
+      // Start the assistant with the provided ID
+      vapi.start(assistantId);
+      
+      // Set loading state to false and player ready to true
+      setIsPlayerReady(true);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error initializing Vapi:", error);
+      setError("Error initializing the voice agent. Please try again later.");
+      setIsLoading(false);
+    }
 
-    const loadScript = () => {
-      // Check if script is already in the document
-      const existingScript = document.getElementById('vapi-script');
-      if (existingScript) {
-        // Script already exists, just initialize Vapi
-        initializeVapi();
-        return;
-      }
-
-      // Create new script element
-      scriptElement = document.createElement("script");
-      scriptElement.id = 'vapi-script';
-      scriptElement.src = "https://sdk.vapi.ai/script.js"; // Using the updated script URL
-      scriptElement.async = true;
-      scriptElement.defer = true;
-      
-      scriptElement.onload = () => {
-        console.log("Vapi script loaded successfully");
-        initializeVapi();
-      };
-      
-      scriptElement.onerror = (e) => {
-        console.error("Failed to load Vapi script:", e);
-        setError("Failed to load voice agent service. Please check your internet connection and try again.");
-        setIsLoading(false);
-      };
-      
-      document.body.appendChild(scriptElement);
-    };
-    
-    // Load the script
-    loadScript();
-    
     return () => {
-      // Cleanup
-      if (scriptElement && document.body.contains(scriptElement)) {
-        document.body.removeChild(scriptElement);
-      }
+      // Cleanup function if needed
+      console.log("Cleaning up Vapi component");
     };
   }, [assistantId]);
 

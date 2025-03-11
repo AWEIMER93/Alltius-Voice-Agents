@@ -1,15 +1,9 @@
 
-interface VapiInstance {
-  start: (assistantId: string) => void;
-}
-
-interface VapiConstructor {
-  new (apiKey: string): VapiInstance;
-}
+import Vapi from "@vapi-ai/web";
 
 declare global {
   interface Window {
-    Vapi: VapiConstructor;
+    Vapi: typeof Vapi;
   }
 }
 
