@@ -11,6 +11,9 @@ import {
   TrendingUp,
 } from "lucide-react";
 
+// Use direct URLs for agent images
+const agentImageBaseUrl = "https://randomuser.me/api/portraits/";
+
 export const agentsList: Agent[] = [
   {
     id: "ca826bca-ff48-4d38-83fc-916378950717",
@@ -19,7 +22,7 @@ export const agentsList: Agent[] = [
     description: "Provides custom quotes for auto insurance with personalized options tailored to your needs.",
     color: "bg-purple-500",
     icon: "Car",
-    image: "/agent-images/agent-male-1.jpg",
+    image: `${agentImageBaseUrl}men/32.jpg`,
   },
   {
     id: "90d49ea2-987a-4c8b-ad61-bc4c4260d7a0",
@@ -28,7 +31,7 @@ export const agentsList: Agent[] = [
     description: "Handles First Notice of Loss reports for insurance claims with efficiency and empathy.",
     color: "bg-violet-500",
     icon: "FileText",
-    image: "/agent-images/agent-male-2.jpg",
+    image: `${agentImageBaseUrl}men/44.jpg`,
   },
   {
     id: "9a9c7a75-00c5-4509-b219-20823a23ec4f",
@@ -37,7 +40,7 @@ export const agentsList: Agent[] = [
     description: "Assists with financial planning, investments, and wealth management solutions.",
     color: "bg-indigo-500",
     icon: "TrendingUp",
-    image: "/agent-images/agent-male-3.jpg",
+    image: `${agentImageBaseUrl}men/68.jpg`,
   },
   {
     id: "dee74b31-8eac-4e12-9bba-95d52447ecaf",
@@ -46,7 +49,7 @@ export const agentsList: Agent[] = [
     description: "Manages healthcare billing, insurance claims, and collection processes with care.",
     color: "bg-fuchsia-500",
     icon: "Stethoscope",
-    image: "/agent-images/agent-male-4.jpg",
+    image: `${agentImageBaseUrl}men/75.jpg`,
   },
   {
     id: "8b21ce94-2406-4d56-b537-9506ed89a6b4",
@@ -55,7 +58,7 @@ export const agentsList: Agent[] = [
     description: "Helps with mortgage questions, payments, and servicing needs for homeowners.",
     color: "bg-purple-500",
     icon: "Home",
-    image: "/agent-images/agent-male-5.jpg",
+    image: `${agentImageBaseUrl}men/51.jpg`,
   },
   {
     id: "09760261-896a-4eec-bc26-024e7a22d946",
@@ -64,7 +67,7 @@ export const agentsList: Agent[] = [
     description: "Provides guidance on home insurance policies, coverage options, and claims.",
     color: "bg-violet-500",
     icon: "Building",
-    image: "/agent-images/agent-female-1.jpg",
+    image: `${agentImageBaseUrl}women/33.jpg`,
   },
 ];
 

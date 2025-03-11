@@ -22,7 +22,7 @@ const AgentCard: React.FC<AgentCardProps> = ({ agent, index }) => {
       className="rounded-xl overflow-hidden glass-card p-6 agent-card-hover border border-purple-100"
     >
       <div className="flex flex-col h-full">
-        <div className="mb-4 rounded-full overflow-hidden w-16 h-16 mx-auto">
+        <div className="mb-4 rounded-full overflow-hidden w-20 h-20 mx-auto border-2 border-purple-100">
           <img 
             src={agent.image} 
             alt={`${agent.name}, ${agent.role}`}
@@ -30,7 +30,7 @@ const AgentCard: React.FC<AgentCardProps> = ({ agent, index }) => {
             onError={(e) => {
               // Fallback if image fails to load
               const target = e.target as HTMLImageElement;
-              target.src = 'https://via.placeholder.com/150?text=' + agent.name.charAt(0);
+              target.src = `https://ui-avatars.com/api/?name=${agent.name}&background=6d28d9&color=fff&size=128`;
             }}
           />
         </div>

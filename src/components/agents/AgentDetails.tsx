@@ -30,7 +30,7 @@ const AgentDetails: React.FC<AgentDetailsProps> = ({ agent }) => {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <div className="flex items-center mb-6">
-            <div className={`rounded-full overflow-hidden w-16 h-16 mr-4 border-2 ${agent.color.replace('bg-', 'border-')}`}>
+            <div className="rounded-full overflow-hidden w-20 h-20 mr-4 border-2 border-purple-300 shadow-md">
               <img 
                 src={agent.image} 
                 alt={`${agent.name}, ${agent.role}`}
@@ -38,7 +38,7 @@ const AgentDetails: React.FC<AgentDetailsProps> = ({ agent }) => {
                 onError={(e) => {
                   // Fallback if image fails to load
                   const target = e.target as HTMLImageElement;
-                  target.src = 'https://via.placeholder.com/150?text=' + agent.name.charAt(0);
+                  target.src = `https://ui-avatars.com/api/?name=${agent.name}&background=6d28d9&color=fff&size=128`;
                 }}
               />
             </div>
@@ -61,15 +61,19 @@ const AgentDetails: React.FC<AgentDetailsProps> = ({ agent }) => {
             <ul className="space-y-2 text-slate-600">
               <li className="flex items-start">
                 <span className="mr-2 text-purple-500 font-bold">1.</span>
-                <span>Click the microphone icon to start speaking with {agent.name}.</span>
+                <span>Click the "Start Conversation" button to begin.</span>
               </li>
               <li className="flex items-start">
                 <span className="mr-2 text-purple-500 font-bold">2.</span>
-                <span>Ask questions related to {agent.role.toLowerCase()}.</span>
+                <span>When the microphone is active, speak clearly to {agent.name}.</span>
               </li>
               <li className="flex items-start">
                 <span className="mr-2 text-purple-500 font-bold">3.</span>
-                <span>Experience a natural conversation with contextual responses.</span>
+                <span>Watch the sound waves as {agent.name} responds to your questions.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2 text-purple-500 font-bold">4.</span>
+                <span>Click "Stop Conversation" when you're finished.</span>
               </li>
             </ul>
           </div>
